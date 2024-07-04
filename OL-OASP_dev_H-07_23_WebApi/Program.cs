@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using OL_OASP_dev_H_07_23_WebApi.Context;
+
 namespace OL_OASP_dev_H_07_23_WebApi
 {
     public class Program
@@ -6,6 +9,11 @@ namespace OL_OASP_dev_H_07_23_WebApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
 
             // Add services to the container.
 

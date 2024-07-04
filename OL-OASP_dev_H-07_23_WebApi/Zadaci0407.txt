@@ -5,3 +5,6 @@ Imamo 2 modela:
 			drugi model je Movie (Title,ReleaseYear,Genre)
 Modelirati do kraja modele (Viewmodels, Binding, DBO itd)
 * Jedan Movie ima vise Actors
+
+Zadatak 2 napraviti CRUD operacije za oba modela unutar servisa koji se zove MoviesService
+(AutoMapper, Migracije, DbContext)
