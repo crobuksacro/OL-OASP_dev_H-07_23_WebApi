@@ -1,6 +1,0 @@
-@OL_OASP_dev_H_07_23_WebApi_HostAddress = http://localhost:5079
-
-GET {{OL_OASP_dev_H_07_23_WebApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

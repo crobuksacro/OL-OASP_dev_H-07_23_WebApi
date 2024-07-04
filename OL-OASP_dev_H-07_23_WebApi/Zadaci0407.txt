@@ -1,0 +1,7 @@
+﻿
+Zadatak 1 napraviti shared folder u kojem moramo smjestiti modele
+Imamo 2 modela:
+			prvi model je Actor (FirstName,LastName)
+			drugi model je Movie (Title,ReleaseYear,Genre)
+Modelirati do kraja modele (Viewmodels, Binding, DBO itd)
+* Jedan Movie ima vise Actors
