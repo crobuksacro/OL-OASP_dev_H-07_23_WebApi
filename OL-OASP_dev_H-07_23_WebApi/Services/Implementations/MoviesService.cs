@@ -121,6 +121,96 @@ namespace OL_OASP_dev_H_07_23_WebApi.Services.Implementations
             return mapper.Map<List<MovieViewModel>>(movies);
         }
 
+        /// <summary>
+        /// Adds an actor to the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActorViewModel AddActor(ActorBinding model)
+        {
+            var dbo = mapper.Map<Actor>(model);
+            dbContext.Actors.Add(dbo);
+            dbContext.SaveChanges();
+            return mapper.Map<ActorViewModel>(dbo);
 
+        }
+        /// <summary>
+        /// Get Actors
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<ActorViewModel>> GetActors()
+        {
+            var Actors = await dbContext.Actors
+                .ToListAsync();
+
+            return mapper.Map<List<ActorViewModel>>(Actors);
+        }
+
+
+        /// <summary>
+        ///  Get Movie By Actor Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public MovieViewModel GetMovieByActorId(int id)
+        {
+            var dbo = dbContext.Actors
+                .Include(y => y.Movie)
+                .FirstOrDefault(m => m.Id == id);
+            if (dbo == null)
+            {
+                return null;
+            }
+            return mapper.Map<MovieViewModel>(dbo.Movie);
+        }
+        /// <summary>
+        /// Get actors by paggination
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public async Task<List<ActorViewModel>> GetActorsWithPagination(int page, int pageSize)
+        {
+            var Actors = await dbContext.Actors
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return mapper.Map<List<ActorViewModel>>(Actors);
+        }
+        /// <summary>
+        /// Deletes an actor by its id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task DeleteActor(int id)
+        {
+            var dbo = await dbContext.Actors.FirstOrDefaultAsync(m => m.Id == id);
+            if (dbo != null)
+            {
+                dbContext.Actors.Remove(dbo);
+                await dbContext.SaveChangesAsync();
+            }
+
+ 
+        }
+
+        /// <summary>
+        /// Updates an actor in the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActorViewModel UpdateActor(ActorUpdateBinding model)
+        {
+            var dbo = dbContext.Actors.FirstOrDefault(m => m.Id == model.Id);
+            if (dbo == null)
+            {
+                return null;
+            }
+            mapper.Map(model, dbo);
+            dbContext.SaveChanges();
+
+            return mapper.Map<ActorViewModel>(dbo);
+        }
     }
 }
