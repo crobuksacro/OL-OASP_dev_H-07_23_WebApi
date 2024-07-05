@@ -4,10 +4,11 @@ using OL_OASP_dev_H_07_23_Shared.Models.Binding;
 using OL_OASP_dev_H_07_23_Shared.Models.ViewModels;
 using OL_OASP_dev_H_07_23_WebApi.Context;
 using OL_OASP_dev_H_07_23_WebApi.Models.Dbo;
+using OL_OASP_dev_H_07_23_WebApi.Services.Interfaces;
 
 namespace OL_OASP_dev_H_07_23_WebApi.Services.Implementations
 {
-    public class MoviesService
+    public class MoviesService : IMoviesService
     {
         public readonly ApplicationDbContext dbContext;
         private readonly IMapper mapper;
@@ -58,6 +59,23 @@ namespace OL_OASP_dev_H_07_23_WebApi.Services.Implementations
             {
                 return null;
             }
+            return mapper.Map<MovieViewModel>(dbo);
+        }
+        /// <summary>
+        /// Updates a movie in the database
+        /// </summary>
+        /// <param name="model">The movie update data</param>
+        /// <returns>The updated MovieViewModel</returns>
+        public MovieViewModel Update(MovieUpdateBinding model)
+        {
+            var dbo = dbContext.Movies.FirstOrDefault(m => m.Id == model.Id);
+            if (dbo == null)
+            {
+                return null;
+            }
+            mapper.Map(model, dbo);
+            dbContext.SaveChanges();
+
             return mapper.Map<MovieViewModel>(dbo);
         }
 

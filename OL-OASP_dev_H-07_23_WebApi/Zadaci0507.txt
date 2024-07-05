@@ -1,0 +1,4 @@
+﻿
+Zadatak 1 napraviti CRUD za glumce u MoviesService
+Zadatak 2 napraviti "expose" za glumce u MoviesController
+Zadatak 3 implmentirati ih u POSTMAN te unijeti nekoliko glumaca
