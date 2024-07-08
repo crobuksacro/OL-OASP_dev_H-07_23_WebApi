@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OL_OASP_dev_H_07_23_MVC.Models;
 using OL_OASP_dev_H_07_23_Shared.Models.Binding;
+using OL_OASP_dev_H_07_23_Shared.Services.Interfaces;
 using System.Diagnostics;
 
 namespace OL_OASP_dev_H_07_23_MVC.Controllers
@@ -8,15 +9,19 @@ namespace OL_OASP_dev_H_07_23_MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IWebApiMovieServiceClient webApiMovieServiceClient;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, IWebApiMovieServiceClient webApiMovieServiceClient)
         {
             _logger = logger;
+            this.webApiMovieServiceClient = webApiMovieServiceClient;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var movies =  webApiMovieServiceClient.GetMovies();
+            return View(movies);
         }
 
 

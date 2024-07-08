@@ -1,3 +1,6 @@
+using OL_OASP_dev_H_07_23_Shared.Services.Implementation;
+using OL_OASP_dev_H_07_23_Shared.Services.Interfaces;
+
 namespace OL_OASP_dev_H_07_23_MVC
 {
     public class Program
@@ -8,6 +11,10 @@ namespace OL_OASP_dev_H_07_23_MVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddWebApiMovieServiceClient("https://localhost:7211");
+
+
+
 
             var app = builder.Build();
 
