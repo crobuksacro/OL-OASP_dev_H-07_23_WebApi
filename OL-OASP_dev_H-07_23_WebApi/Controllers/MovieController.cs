@@ -113,8 +113,8 @@ namespace OL_OASP_dev_H_07_23_WebApi.Controllers
         [ProducesResponseType(typeof(ActorViewModel), StatusCodes.Status200OK)]
         public async Task<ActionResult<ActorViewModel>> Update([FromBody] ActorUpdateBinding model)
         {
-            var Actor = _moviesService.UpdateActor(model);
-            return Ok(Actor);
+            var actor = _moviesService.UpdateActor(model);
+            return Ok(actor);
         }
         /// <summary>
         /// Adds an actor to the database

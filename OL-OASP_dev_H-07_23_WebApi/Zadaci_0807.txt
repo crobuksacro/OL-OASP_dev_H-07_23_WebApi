@@ -1,0 +1,7 @@
+﻿
+Zadatak 1 napravit novi projekt MVC i nazvati ga OL-OASP_dev_H-07_23_MVC
+Zadatak 2 dodati OL-OASP_dev_H-07_23_Shared kao referencu u OL-OASP_dev_H-07_23_MVC
+Zadatak 3 Napraviti kontroler sa CRUD akcijama koristeci modele iz OL-OASP_dev_H-07_23_Shared
+
+
+
