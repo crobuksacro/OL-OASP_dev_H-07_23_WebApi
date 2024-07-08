@@ -11,6 +11,8 @@ namespace OL_OASP_dev_H_07_23_WebApi.Mapping
         {
             CreateMap<Actor, ActorViewModel>();
             CreateMap<ActorBinding, Actor>();
+            CreateMap<ActorUpdateBinding, Actor>();
+
 
             CreateMap<Movie, MovieViewModel>();
             CreateMap<MovieBinding, Movie>();

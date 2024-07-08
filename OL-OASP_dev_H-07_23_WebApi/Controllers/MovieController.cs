@@ -80,5 +80,53 @@ namespace OL_OASP_dev_H_07_23_WebApi.Controllers
             var movie = await _moviesService.GetMovies();
             return Ok(movie);
         }
+
+        /// <summary>
+        /// Get all actors
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("actors")]
+        [ProducesResponseType(typeof(List<ActorViewModel>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<ActorViewModel>>> GetActors()
+        {
+            var actor = await _moviesService.GetActors();
+            return Ok(actor);
+        }
+        /// <summary>
+        /// Deletes an actor by its id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("actor/{id}")]
+        [ProducesResponseType(typeof(ActorViewModel), StatusCodes.Status200OK)]
+        public async Task<ActionResult<ActorViewModel>> DeleteActor(int id)
+        {
+            await _moviesService.DeleteActor(id);
+            return Ok(new { Poruka = $"Film sa idom {id} je uspješno obrisan!" });
+        }
+        /// <summary>
+        /// Updates an actor in the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut ("actor")]
+        [ProducesResponseType(typeof(ActorViewModel), StatusCodes.Status200OK)]
+        public async Task<ActionResult<ActorViewModel>> Update([FromBody] ActorUpdateBinding model)
+        {
+            var Actor = _moviesService.UpdateActor(model);
+            return Ok(Actor);
+        }
+        /// <summary>
+        /// Adds an actor to the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("actor")]
+        [ProducesResponseType(typeof(ActorViewModel), StatusCodes.Status200OK)]
+        public async Task<ActionResult<ActorViewModel>> Add([FromBody] ActorBinding model)
+        {
+            var Actor = _moviesService.AddActor(model);
+            return Ok(Actor);
+        }
     }
 }

@@ -40,6 +40,33 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Controllers.MovieController.GetActors">
+            <summary>
+            Get all actors
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Controllers.MovieController.DeleteActor(System.Int32)">
+            <summary>
+            Deletes an actor by its id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Controllers.MovieController.Update(OL_OASP_dev_H_07_23_Shared.Models.Binding.ActorUpdateBinding)">
+            <summary>
+            Updates an actor in the database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Controllers.MovieController.Add(OL_OASP_dev_H_07_23_Shared.Models.Binding.ActorBinding)">
+            <summary>
+            Adds an actor to the database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:OL_OASP_dev_H_07_23_WebApi.Migrations.init">
             <inheritdoc />
         </member>
@@ -98,6 +125,48 @@
             <summary>
             Get all movies
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Implementations.MoviesService.AddActor(OL_OASP_dev_H_07_23_Shared.Models.Binding.ActorBinding)">
+            <summary>
+            Adds an actor to the database
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Implementations.MoviesService.GetActors">
+            <summary>
+            Get Actors
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Implementations.MoviesService.GetMovieByActorId(System.Int32)">
+            <summary>
+             Get Movie By Actor Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Implementations.MoviesService.GetActorsWithPagination(System.Int32,System.Int32)">
+            <summary>
+            Get actors by paggination
+            </summary>
+            <param name="page"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Implementations.MoviesService.DeleteActor(System.Int32)">
+            <summary>
+            Deletes an actor by its id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Implementations.MoviesService.UpdateActor(OL_OASP_dev_H_07_23_Shared.Models.Binding.ActorUpdateBinding)">
+            <summary>
+            Updates an actor in the database
+            </summary>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Interfaces.IMoviesService.Update(OL_OASP_dev_H_07_23_Shared.Models.Binding.MovieUpdateBinding)">
