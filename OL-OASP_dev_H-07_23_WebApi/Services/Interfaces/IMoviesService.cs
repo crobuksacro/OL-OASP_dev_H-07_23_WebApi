@@ -5,6 +5,12 @@ namespace OL_OASP_dev_H_07_23_WebApi.Services.Interfaces
 {
     public interface IMoviesService
     {
+        /// <summary>
+        /// Validates if a movie exists in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<bool> MovieExists(int id);
         MovieViewModel Add(MovieBinding model);
         ActorViewModel AddActor(ActorBinding model);
         Task Delete(int id);

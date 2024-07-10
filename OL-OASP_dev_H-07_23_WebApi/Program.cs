@@ -1,4 +1,5 @@
 
+using FluentValidation;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.PlatformAbstractions;
@@ -27,6 +28,9 @@ namespace OL_OASP_dev_H_07_23_WebApi
             builder.Services.AddScoped<IMoviesService, MoviesService>();
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+
+
+            builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Transient);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>

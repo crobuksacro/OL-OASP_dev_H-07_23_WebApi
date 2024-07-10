@@ -86,6 +86,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Implementations.MoviesService.MovieExists(System.Int32)">
+            <summary>
+            Validates if a movie exists in the database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Implementations.MoviesService.Get(System.Int32)">
              <summary>
             Gets a movie by its id
@@ -167,6 +174,13 @@
             Updates an actor in the database
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Interfaces.IMoviesService.MovieExists(System.Int32)">
+            <summary>
+            Validates if a movie exists in the database
+            </summary>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:OL_OASP_dev_H_07_23_WebApi.Services.Interfaces.IMoviesService.Update(OL_OASP_dev_H_07_23_Shared.Models.Binding.MovieUpdateBinding)">

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using OL_OASP_dev_H_07_23_Shared.Models.Binding;
 using OL_OASP_dev_H_07_23_Shared.Models.ViewModels;
 using OL_OASP_dev_H_07_23_WebApi.Services.Interfaces;
@@ -9,10 +10,13 @@ namespace OL_OASP_dev_H_07_23_WebApi.Controllers
     public class MovieController : ControllerBase
     {
         private readonly IMoviesService _moviesService;
+        private readonly IValidator<MovieUpdateBinding> _movieUpdateBindingValidator;
 
-        public MovieController(IMoviesService moviesService)
+
+        public MovieController(IMoviesService moviesService, IValidator<MovieUpdateBinding> movieUpdateBindingValidator)
         {
             _moviesService = moviesService;
+            _movieUpdateBindingValidator = movieUpdateBindingValidator;
         }
 
         /// <summary>
@@ -53,8 +57,14 @@ namespace OL_OASP_dev_H_07_23_WebApi.Controllers
         [ProducesResponseType(typeof(MovieViewModel), StatusCodes.Status200OK)]
         public async Task<ActionResult<MovieViewModel>> Update([FromBody] MovieUpdateBinding model)
         {
-            var movie = _moviesService.Update(model);
-            return Ok(movie);
+            var result = await _movieUpdateBindingValidator.ValidateAsync(model);
+            if (result.IsValid)
+            {
+                var movie = _moviesService.Update(model);
+                return Ok(movie);
+            }
+
+            return BadRequest(result.ToDictionary());
         }
         /// <summary>
         /// Deletes a movie by its id
@@ -109,7 +119,7 @@ namespace OL_OASP_dev_H_07_23_WebApi.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPut ("actor")]
+        [HttpPut("actor")]
         [ProducesResponseType(typeof(ActorViewModel), StatusCodes.Status200OK)]
         public async Task<ActionResult<ActorViewModel>> Update([FromBody] ActorUpdateBinding model)
         {

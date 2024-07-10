@@ -34,6 +34,16 @@ namespace OL_OASP_dev_H_07_23_WebApi.Services.Implementations
         }
 
         /// <summary>
+        /// Validates if a movie exists in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<bool> MovieExists(int id)
+        {
+            return await dbContext.Movies.FindAsync(id) != null;
+        }
+
+        /// <summary>
         ///Gets a movie by its id
         /// </summary>
         /// <param name="id"></param>
