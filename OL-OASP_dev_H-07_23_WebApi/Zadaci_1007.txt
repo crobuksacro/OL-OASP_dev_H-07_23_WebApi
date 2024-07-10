@@ -1,0 +1,7 @@
+﻿
+Zadatak 1 po uzoru na MovieUpdateBindingValidation napraviti validaciju za model ActorBinding.
+Validirati ID filma, ako ga nema onda vratiti NotFound, 
+valdirati ime, prezime ako ga korisnik nije unio vratiti MissingValue
+
+
+
