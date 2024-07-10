@@ -11,12 +11,15 @@ namespace OL_OASP_dev_H_07_23_WebApi.Controllers
     {
         private readonly IMoviesService _moviesService;
         private readonly IValidator<MovieUpdateBinding> _movieUpdateBindingValidator;
+        private readonly IValidator<ActorBinding> _actorBindingValidation;
 
-
-        public MovieController(IMoviesService moviesService, IValidator<MovieUpdateBinding> movieUpdateBindingValidator)
+        public MovieController(IMoviesService moviesService,
+            IValidator<MovieUpdateBinding> movieUpdateBindingValidator,
+            IValidator<ActorBinding> actorBindingValidation)
         {
             _moviesService = moviesService;
             _movieUpdateBindingValidator = movieUpdateBindingValidator;
+            _actorBindingValidation = actorBindingValidation;
         }
 
         /// <summary>
