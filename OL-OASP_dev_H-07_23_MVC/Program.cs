@@ -13,8 +13,7 @@ namespace OL_OASP_dev_H_07_23_MVC
             builder.Services.AddControllersWithViews();
             builder.Services.AddWebApiMovieServiceClient("https://localhost:7211");
 
-
-
+   
 
             var app = builder.Build();
 

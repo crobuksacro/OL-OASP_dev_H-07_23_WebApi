@@ -33,29 +33,35 @@ namespace OL_OASP_dev_H_07_23_MVC.Controllers
         [HttpPost]
         public IActionResult Create(MovieBinding model)
         {
-            return View();
+            webApiMovieServiceClient.AddMovie(model);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Details(int id)
         {
-            return View();
+            var response =  webApiMovieServiceClient.GetMovie(id);
+
+            return View(response);
         }
 
 
         public IActionResult Delete(int id)
         {
+            webApiMovieServiceClient.GetMovie(id);
            return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            return View();
+            var response = webApiMovieServiceClient.GetMovie<MovieUpdateBinding>(id);
+            return View(response);
         }
 
         [HttpPost]
         public IActionResult Edit(MovieUpdateBinding model)
         {
-            return View();
+            webApiMovieServiceClient.Update(model);
+            return RedirectToAction("Index");
         }
     }
 }
