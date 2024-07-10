@@ -31,6 +31,17 @@ namespace OL_OASP_dev_H_07_23_Shared.Services.Implementation
         {
             return DoRequestAndTryGetResponseContent<T>($"api/movie/{id}", HttpMethod.Get, true, unsuccessfulResponseAction);
         }
+        /// <summary>
+        /// Deletes a movie by its id
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <param name="unsuccessfulResponseAction"></param>
+        /// <returns></returns>
+        public void DeleteMovie(int id, Action<HttpResponseMessage> unsuccessfulResponseAction = null)
+        {
+             DoRequestAndTryGetResponseContent<MovieViewModel>($"api/movie/{id}", HttpMethod.Delete, false, unsuccessfulResponseAction);
+        }
 
         /// <summary>
         /// Adds a movie to the database

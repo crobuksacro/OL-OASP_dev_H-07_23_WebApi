@@ -47,7 +47,7 @@ namespace OL_OASP_dev_H_07_23_MVC.Controllers
 
         public IActionResult Delete(int id)
         {
-            webApiMovieServiceClient.GetMovie(id);
+            webApiMovieServiceClient.DeleteMovie(id);
            return RedirectToAction("Index");
         }
 
