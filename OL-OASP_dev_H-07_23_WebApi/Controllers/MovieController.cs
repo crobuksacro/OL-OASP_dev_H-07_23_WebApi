@@ -138,8 +138,13 @@ namespace OL_OASP_dev_H_07_23_WebApi.Controllers
         [ProducesResponseType(typeof(ActorViewModel), StatusCodes.Status200OK)]
         public async Task<ActionResult<ActorViewModel>> Add([FromBody] ActorBinding model)
         {
-            var Actor = _moviesService.AddActor(model);
-            return Ok(Actor);
+            var result = await _actorBindingValidation.ValidateAsync(model);
+            if (result.IsValid)
+            {
+                var actor = _moviesService.AddActor(model);
+                return Ok(actor);
+            }
+            return BadRequest(result.ToDictionary());
         }
     }
 }
